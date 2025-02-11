@@ -13,4 +13,4 @@ Users can also toggle whether a book has been read or not, by changing its read 
 Currently, there is no storage right now to save the information between page reloads. 
 
 ## License
-This Javacript project is a part of [The Odin Project](www.theodinproject.com), an open source Web Development cirriculum. 
+This Javacript project is a part of [The Odin Project](https://www.theodinproject.com/), an open source Web Development cirriculum. 
