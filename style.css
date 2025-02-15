@@ -5,3 +5,20 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 15px
+}
+
+.bookCardStyle {
+    border: 2px solid black;
+    border-radius: 6px;
+
+    background-color: lightblue;
+}
+
+footer {
+    padding-top: 50px;
+}

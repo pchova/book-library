@@ -21,40 +21,72 @@ addBookToLibrary(b3);
 let b4 = new Book("Dama s Sabachkoi", "Anton Chekhov", "50", "True");
 addBookToLibrary(b4);
 
-const container = document.querySelector(".container");
-const bookTable = document.createElement("table");
-const tableBody = document.createElement("tbody");
+function addCardToPage() {
+  const container = document.querySelector(".container");
 
-bookTable.innerHTML = 
-  `<thead>
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Pages</th>
-          <th>Read</th>
-        </tr>
-    </thead>`;
+  for(let book of myLibrary) {
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("bookCardStyle");
 
-for(let book of myLibrary) {
-  const newRow = document.createElement("tr");
-  const tdTitle = document.createElement("td");
-  const tdAuthor = document.createElement("td");
-  const tdPages = document.createElement("td");
-  const tdRead = document.createElement("td"); 
+    const pTitle = document.createElement("p");
+    const pAuthor = document.createElement("p");
+    const pPages = document.createElement("p");
+    const pRead = document.createElement("p");
 
-  tdTitle.textContent = book.title;
-  tdAuthor.textContent = book.author;
-  tdPages.textContent = book.numberOfPages;
-  tdRead.textContent = book.read;
+    pTitle.textContent = book.title;
+    pAuthor.textContent = book.author;
+    pPages.textContent = book.numberOfPages += " pgs";
+    pRead.textContent = book.read;
 
-  newRow.appendChild(tdTitle);
-  newRow.appendChild(tdAuthor);
-  newRow.appendChild(tdPages);
-  newRow.appendChild(tdRead);
+    bookCard.appendChild(pTitle);
+    bookCard.appendChild(pAuthor);
+    bookCard.appendChild(pPages);
+    bookCard.appendChild(pRead);
 
-  tableBody.appendChild(newRow);
+    container.appendChild(bookCard);
+  }
 }
+addCardToPage();
 
-bookTable.appendChild(tableBody);
-container.appendChild(bookTable);
+
+
+function addBookToPage() {
+  const container = document.querySelector(".footer");
+  const bookTable = document.createElement("table");
+  const tableBody = document.createElement("tbody");
+
+  bookTable.innerHTML = 
+    `<thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Read</th>
+          </tr>
+      </thead>`;
+
+  for(let book of myLibrary) {
+    const newRow = document.createElement("tr");
+    const tdTitle = document.createElement("td");
+    const tdAuthor = document.createElement("td");
+    const tdPages = document.createElement("td");
+    const tdRead = document.createElement("td"); 
+
+    tdTitle.textContent = book.title;
+    tdAuthor.textContent = book.author;
+    tdPages.textContent = book.numberOfPages;
+    tdRead.textContent = book.read;
+
+    newRow.appendChild(tdTitle);
+    newRow.appendChild(tdAuthor);
+    newRow.appendChild(tdPages);
+    newRow.appendChild(tdRead);
+
+    tableBody.appendChild(newRow);
+  }
+
+  bookTable.appendChild(tableBody);
+  container.appendChild(bookTable);
+};
+addBookToPage(); 
 
