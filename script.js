@@ -1,6 +1,8 @@
 const myLibrary = [];
 let newBook;
 
+/* Book() function creates new Book object and sets its parameters
+** for a book title, author, number of pages, and boolean read */
 function Book(title, author, numberOfPages, read) {
     this.title = title;
     this.author = author;
@@ -8,20 +10,25 @@ function Book(title, author, numberOfPages, read) {
     this.read = read;
 }
 
+/* addBookToLibrary() function adds a newly created Book object 
+** to the myLibrary array */
 function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-let b1 = new Book("The Master and Margarita", "Mikhail Bulgakov", "448", "true");
-addBookToLibrary(b1);
-let b2 = new Book("Idiot", "Fyodor Dostoyevskiy", "640", "false");
-addBookToLibrary(b2);
-let b3 = new Book("Anna Karenina", "Lev Tolstoy", "864", "false");
-addBookToLibrary(b3);
-let b4 = new Book("Dama s Sabachkoi", "Anton Chekhov", "50", "true");
-addBookToLibrary(b4);
+/* addManualCardToPage() function manually adds books to the array 
+** and displays them on the page without subitting through the user form */
+function addManualCardToPage() {
+  let b1 = new Book("The Master and Margarita", "Mikhail Bulgakov", "448", "true");
+  let b2 = new Book("Idiot", "Fyodor Dostoyevskiy", "640", "false");
+  let b3 = new Book("Anna Karenina", "Lev Tolstoy", "864", "false");
+  let b4 = new Book("Dama s Sabachkoi", "Anton Chekhov", "50", "true");
 
-function addCardToPage() {
+  addBookToLibrary(b1);
+  addBookToLibrary(b2);
+  addBookToLibrary(b3);
+  addBookToLibrary(b4);
+
   const container = document.querySelector(".container");
 
   for(let book of myLibrary) {
@@ -49,44 +56,80 @@ function addCardToPage() {
     bookCard.appendChild(pAuthor);
     bookCard.appendChild(pPages);
     bookCard.appendChild(pRead);
-
     container.appendChild(bookCard);
   }
 }
-//addCardToPage();
+addManualCardToPage();
 
+/* The code below deals with the dialog box and form submit, allows user
+** to close the modal box witout submitting data and prevents form data
+** to submit and instead displays data in the container class after the
+** already created Book objects */
 const dialog = document.querySelector("dialog");
 const addButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
 const submitButton = document.querySelector("#submitBtn");
 
-//"Add Book" button opens the dialog modally
+/* Allows addButton to open the dialog */
 addButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
-//"Close" button closes the dialog
+/* Allows closeButton to close the dialog */
 closeButton.addEventListener("click", () => {
   dialog.close();
 });
 
+/* Event Listener prevents prevents submitting the form and instead
+** displays the data on the page */
 submitButton.addEventListener("click", (event) => {
-  event.preventDefault(); //we do not want to submit this form
+  event.preventDefault();
 
   const bookTitleSubmit = document.querySelector("#book_title");
-  //console.log(bookTitleSubmit.value);
   const bookAuthorSubmit = document.querySelector("#book_author");
-  //console.log(bookAuthorSubmit.value);
   const bookPagesSubmit = document.querySelector("#book_pages");
-  //console.log(bookPagesSubmit.value);
-  const bookReadSubmit = document.querySelector("#true");
-  //console.log(bookReadSubmit.value);
+  const bookReadSubmit = document.querySelector("#false");                 //MUST FIX THIS IT ONLY GOES TO TRUE
   
   let userBook = new Book(bookTitleSubmit.value, bookAuthorSubmit.value, bookPagesSubmit.value, bookReadSubmit.value);
-  console.log(userBook);
   addBookToLibrary(userBook);
 
+  /* addCardToPage() function is similar to addManualCardToPage but only displays 
+  ** the last item in myLibrary array */
+  function addCardToPage() {
+    let lastItem = myLibrary[myLibrary.length -1];
+    const container = document.querySelector(".container");
+
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("bookCardStyle");
+
+    const pTitle = document.createElement("p");
+    const pAuthor = document.createElement("p");
+    const pPages = document.createElement("p");
+    const pRead = document.createElement("p");
+
+    pTitle.textContent = lastItem.title;
+    pAuthor.textContent = lastItem.author;
+    pPages.textContent = lastItem.numberOfPages += " pgs";
+    /* Conditional Statement to display whether book has been read or not */    //MUST FIX IT ONLY GOES TO TRUE(like above)
+    if(lastItem.read === "true") {
+      pRead.textContent = "Read";
+    } else if (lastItem.read === "false") {
+      pRead.textContent = "Not Read";
+    } else {
+      pRead.textContent = "error in code";
+    }
+
+    bookCard.appendChild(pTitle);
+    bookCard.appendChild(pAuthor);
+    bookCard.appendChild(pPages);
+    bookCard.appendChild(pRead);
+    container.appendChild(bookCard);
+  }
+  
   dialog.close(addCardToPage());
+
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach(input => input.value = '');
 });
 
 
@@ -107,7 +150,10 @@ submitButton.addEventListener("click", (event) => {
 
 
 
-/* function addBookToPage() {
+
+
+/*Displays books in array in a table!!! 
+  function addBookToPage() {
   const container = document.querySelector(".container2");
   const bookTable = document.createElement("table");
   const tableBody = document.createElement("tbody");
