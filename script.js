@@ -53,11 +53,12 @@ function addCardToPage() {
     container.appendChild(bookCard);
   }
 }
-addCardToPage();
+//addCardToPage();
 
 const dialog = document.querySelector("dialog");
 const addButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
+const submitButton = document.querySelector("#submitBtn");
 
 //"Add Book" button opens the dialog modally
 addButton.addEventListener("click", () => {
@@ -67,6 +68,25 @@ addButton.addEventListener("click", () => {
 //"Close" button closes the dialog
 closeButton.addEventListener("click", () => {
   dialog.close();
+});
+
+submitButton.addEventListener("click", (event) => {
+  event.preventDefault(); //we do not want to submit this form
+
+  const bookTitleSubmit = document.querySelector("#book_title");
+  //console.log(bookTitleSubmit.value);
+  const bookAuthorSubmit = document.querySelector("#book_author");
+  //console.log(bookAuthorSubmit.value);
+  const bookPagesSubmit = document.querySelector("#book_pages");
+  //console.log(bookPagesSubmit.value);
+  const bookReadSubmit = document.querySelector("#true");
+  //console.log(bookReadSubmit.value);
+  
+  let userBook = new Book(bookTitleSubmit.value, bookAuthorSubmit.value, bookPagesSubmit.value, bookReadSubmit.value);
+  console.log(userBook);
+  addBookToLibrary(userBook);
+
+  dialog.close(addCardToPage());
 });
 
 

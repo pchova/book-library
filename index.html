@@ -10,48 +10,47 @@
 <body>
     <main>
         <h2>The Library</h2>
-
-        <main class="container"></main>
-
-        <footer class="footer">
-            <dialog id="addBookDialog">
-                <button autofocus>X</button>
-
-                <form>
-                    <h3>Add a Book to the Library</h3>
-
-                    <div>
-                        <label for="book_title">Title</label>
-                        <input type="text" id="book_title">
-                    </div>
-
-                    <div>
-                        <label for="book_author">Author</label>
-                        <input type="text" id="book_author">
-                    </div>
-
-                    <div>
-                        <label for="book_pages">Number of Pages</label>
-                        <input type="text" id="book_pages">
-                    </div>
-
-                    <fieldset>
-                        <legend>Have You Read the Book?</legend>
-
-                        <label for="true">Read</label>
-                        <input type="radio" id="true" name="read_type" value="true">
-
-                        <label for="false">Not Read</label>
-                        <input type="radio" id="false" name="read_type" value="false" checked>
-                    </fieldset>
-
-                    <div>
-                        <button id="submitBtn" value="default">Submit</button>
-                    </div>
-                </form>
-            </dialog>
-            <button id="addButtonStyle">ADD BOOK</button>
-        </footer>
+        <div class="container"></div>
     </main>
+    
+    <footer class="footer">
+        <dialog id="addBookDialog">
+            <button autofocus>X</button>
+
+            <form>
+                <h3>Add a Book to the Library</h3>
+
+                <div>
+                    <label for="book_title">Title</label>
+                    <input type="text" id="book_title">
+                </div>
+
+                <div>
+                    <label for="book_author">Author</label>
+                    <input type="text" id="book_author">
+                </div>
+
+                <div>
+                    <label for="book_pages">Number of Pages</label>
+                    <input type="text" id="book_pages">
+                </div>
+
+                <fieldset>
+                    <legend>Have You Read the Book?</legend>
+
+                    <label for="true">Read</label>
+                    <input type="radio" id="true" name="read_type" value="true">
+
+                    <label for="false">Not Read</label>
+                    <input type="radio" id="true" name="read_type" value="false" checked>
+                </fieldset>
+
+                <div>
+                    <button id="submitBtn" value="default">Submit</button>
+                </div>
+            </form>
+        </dialog>
+        <button id="addButtonStyle">ADD BOOK</button>
+    </footer>
 </body>
 </html>
