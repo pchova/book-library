@@ -14,9 +14,9 @@ function addBookToLibrary(newBook) {
 
 let b1 = new Book("The Master and Margarita", "Mikhail Bulgakov", "448", "true");
 addBookToLibrary(b1);
-let b2 = new Book("Idiot", "Fyodor Dostoyevskiy", "1000", "false");
+let b2 = new Book("Idiot", "Fyodor Dostoyevskiy", "640", "false");
 addBookToLibrary(b2);
-let b3 = new Book("Anna Karenina", "Lev Tolstoy", "2540", "false");
+let b3 = new Book("Anna Karenina", "Lev Tolstoy", "864", "false");
 addBookToLibrary(b3);
 let b4 = new Book("Dama s Sabachkoi", "Anton Chekhov", "50", "true");
 addBookToLibrary(b4);
@@ -36,7 +36,7 @@ function addCardToPage() {
     pTitle.textContent = book.title;
     pAuthor.textContent = book.author;
     pPages.textContent = book.numberOfPages += " pgs";
-
+    /* Conditional Statement to display whether book has been read or not */
     if(book.read === "true") {
       pRead.textContent = "Read";
     } else if (book.read === "false") {
@@ -58,7 +58,7 @@ addCardToPage();
 
 
 function addBookToPage() {
-  const container = document.querySelector(".footer");
+  const container = document.querySelector(".container2");
   const bookTable = document.createElement("table");
   const tableBody = document.createElement("tbody");
 
