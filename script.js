@@ -55,9 +55,39 @@ function addCardToPage() {
 }
 addCardToPage();
 
+const dialog = document.querySelector("dialog");
+const addButton = document.querySelector("dialog + button");
+const closeButton = document.querySelector("dialog button");
+
+//"Add Book" button opens the dialog modally
+addButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+//"Close" button closes the dialog
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
 
 
-function addBookToPage() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* function addBookToPage() {
   const container = document.querySelector(".container2");
   const bookTable = document.createElement("table");
   const tableBody = document.createElement("tbody");
@@ -95,5 +125,4 @@ function addBookToPage() {
   bookTable.appendChild(tableBody);
   container.appendChild(bookTable);
 };
-addBookToPage(); 
-
+addBookToPage();  */
