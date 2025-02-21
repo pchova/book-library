@@ -12,13 +12,13 @@ function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-let b1 = new Book("The Master and Margarita", "Mikhail Bulgakov", "448", "True");
+let b1 = new Book("The Master and Margarita", "Mikhail Bulgakov", "448", "true");
 addBookToLibrary(b1);
-let b2 = new Book("Idiot", "Fyodor Dostoyevskiy", "1000", "False");
+let b2 = new Book("Idiot", "Fyodor Dostoyevskiy", "1000", "false");
 addBookToLibrary(b2);
-let b3 = new Book("Anna Karenina", "Lev Tolstoy", "2540", "False");
+let b3 = new Book("Anna Karenina", "Lev Tolstoy", "2540", "false");
 addBookToLibrary(b3);
-let b4 = new Book("Dama s Sabachkoi", "Anton Chekhov", "50", "True");
+let b4 = new Book("Dama s Sabachkoi", "Anton Chekhov", "50", "true");
 addBookToLibrary(b4);
 
 function addCardToPage() {
@@ -36,7 +36,14 @@ function addCardToPage() {
     pTitle.textContent = book.title;
     pAuthor.textContent = book.author;
     pPages.textContent = book.numberOfPages += " pgs";
-    pRead.textContent = book.read;
+
+    if(book.read === "true") {
+      pRead.textContent = "Read";
+    } else if (book.read === "false") {
+      pRead.textContent = "Not Read";
+    } else {
+      pRead.textContent = "error in code";
+    }
 
     bookCard.appendChild(pTitle);
     bookCard.appendChild(pAuthor);
