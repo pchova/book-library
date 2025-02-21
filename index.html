@@ -14,10 +14,10 @@
         <main class="container"></main>
 
         <footer class="footer">
-            <dialog>
+            <dialog id="addBookDialog">
                 <button autofocus>X</button>
 
-                <form action="POST">
+                <form>
                     <h3>Add a Book to the Library</h3>
 
                     <div>
@@ -44,6 +44,10 @@
                         <label for="false">Not Read</label>
                         <input type="radio" id="false" name="read_type" value="false" checked>
                     </fieldset>
+
+                    <div>
+                        <button id="submitBtn" value="default">Submit</button>
+                    </div>
                 </form>
             </dialog>
             <button id="addButtonStyle">ADD BOOK</button>
