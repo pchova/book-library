@@ -53,3 +53,22 @@ footer {
 #addButtonStyle:hover {
     background-color: goldenrod;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+legend {
+    padding: 10px 0px 0px;
+}
