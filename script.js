@@ -1,5 +1,5 @@
+/* CONSTANTS */
 const myLibrary = [];
-let newBook;
 
 /* Book class sets parameters for a book title, author, 
 ** number of pages, and boolean read */
@@ -21,10 +21,10 @@ function addBookToLibrary(newBook) {
 /* addManualCardToPage() function manually adds books to the array 
 ** and displays them on the page without subitting through the user form */
 function addManualCardToPage() {
-  let b1 = new Book("The Master and Margarita", "Mikhail Bulgakov", "448", "true");
-  let b2 = new Book("Idiot", "Fyodor Dostoyevskiy", "640", "false");
-  let b3 = new Book("Anna Karenina", "Lev Tolstoy", "864", "false");
-  let b4 = new Book("Dama s Sabachkoi", "Anton Chekhov", "50", "true");
+  let b1 = new Book("The Master and Margarita", "Mikhail Bulgakov", "448", true);
+  let b2 = new Book("Idiot", "Fyodor Dostoyevskiy", "640", false);
+  let b3 = new Book("Anna Karenina", "Lev Tolstoy", "864", false);
+  let b4 = new Book("Dama s Sabachkoi", "Anton Chekhov", "50", true);
 
   addBookToLibrary(b1);
   addBookToLibrary(b2);
@@ -46,9 +46,9 @@ function addManualCardToPage() {
     pAuthor.textContent = book.author;
     pPages.textContent = book.numberOfPages += " pages";
     /* Conditional Statement to display whether book has been read or not */
-    if(book.read === "true") {
+    if(book.read === true) {
       pRead.textContent = "Read";
-    } else if (book.read === "false") {
+    } else if (book.read === false) {
       pRead.textContent = "Not Read";
     } else {
       pRead.textContent = "error in code";
@@ -92,9 +92,14 @@ submitButton.addEventListener("click", (event) => {
   const bookPagesSubmit = document.querySelector('#book_pages');
   const bookReadSubmit = document.querySelector('input[name="read_type"]:checked');
 
-  let userBook = new Book(bookTitleSubmit.value, bookAuthorSubmit.value, bookPagesSubmit.value, bookReadSubmit.value);
+  let userBook = new Book(
+    bookTitleSubmit.value, 
+    bookAuthorSubmit.value, 
+    bookPagesSubmit.value, 
+    bookReadSubmit.value === "true"
+  );
   addBookToLibrary(userBook);
-  console.log(userBook);
+  console.log(userBook);              //test to see output of last Book added!!
 
   /* addCardToPage() function is similar to addManualCardToPage but only displays 
   ** the last item in myLibrary array */
@@ -114,9 +119,9 @@ submitButton.addEventListener("click", (event) => {
     pAuthor.textContent = lastItem.author;
     pPages.textContent = lastItem.numberOfPages += " pages";
     /* Conditional Statement to display whether book has been read or not */
-    if(lastItem.read === "true") {
+    if(lastItem.read === true) {
       pRead.textContent = "Read";
-    } else if (lastItem.read === "false") {
+    } else if (lastItem.read === false) {
       pRead.textContent = "Not Read";
     } else {
       pRead.textContent = "error in code";
@@ -129,8 +134,8 @@ submitButton.addEventListener("click", (event) => {
     container.appendChild(bookCard);
   }
   
-  dialog.close(addCardToPage());
+  addCardToPage();
+  dialog.close();
 
-  const inputs = document.querySelectorAll('input[type="text"]');
-  inputs.forEach(input => input.value = '');
+  document.querySelector("form").reset();
 });
