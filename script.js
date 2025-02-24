@@ -42,7 +42,7 @@ function addManualCardToPage() {
 
     pTitle.textContent = book.title;
     pAuthor.textContent = book.author;
-    pPages.textContent = book.numberOfPages += " pgs";
+    pPages.textContent = book.numberOfPages += " pages";
     /* Conditional Statement to display whether book has been read or not */
     if(book.read === "true") {
       pRead.textContent = "Read";
@@ -88,10 +88,11 @@ submitButton.addEventListener("click", (event) => {
   const bookTitleSubmit = document.querySelector("#book_title");
   const bookAuthorSubmit = document.querySelector("#book_author");
   const bookPagesSubmit = document.querySelector("#book_pages");
-  const bookReadSubmit = document.querySelector("#false");                 //MUST FIX THIS IT ONLY GOES TO TRUE
-  
+  const bookReadSubmit = document.querySelector('input[name="read_type"]:checked');
+
   let userBook = new Book(bookTitleSubmit.value, bookAuthorSubmit.value, bookPagesSubmit.value, bookReadSubmit.value);
   addBookToLibrary(userBook);
+  console.log(userBook);
 
   /* addCardToPage() function is similar to addManualCardToPage but only displays 
   ** the last item in myLibrary array */
@@ -109,15 +110,8 @@ submitButton.addEventListener("click", (event) => {
 
     pTitle.textContent = lastItem.title;
     pAuthor.textContent = lastItem.author;
-    pPages.textContent = lastItem.numberOfPages += " pgs";
-    /* Conditional Statement to display whether book has been read or not */    //MUST FIX IT ONLY GOES TO TRUE(like above)
-    if(lastItem.read === "true") {
-      pRead.textContent = "Read";
-    } else if (lastItem.read === "false") {
-      pRead.textContent = "Not Read";
-    } else {
-      pRead.textContent = "error in code";
-    }
+    pPages.textContent = lastItem.numberOfPages += " pages";
+    pRead.textContent = lastItem.read;
 
     bookCard.appendChild(pTitle);
     bookCard.appendChild(pAuthor);

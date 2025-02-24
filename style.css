@@ -8,8 +8,8 @@ html {
 
 .container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 15px
+    grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
+    grid-gap: 15px;
 }
 
 .bookCardStyle {
