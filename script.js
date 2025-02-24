@@ -1,13 +1,15 @@
 const myLibrary = [];
 let newBook;
 
-/* Book() function creates new Book object and sets its parameters
-** for a book title, author, number of pages, and boolean read */
-function Book(title, author, numberOfPages, read) {
+/* Book class sets parameters for a book title, author, 
+** number of pages, and boolean read */
+class Book {
+  constructor(title, author, numberOfPages, read) {
     this.title = title;
     this.author = author;
     this.numberOfPages = numberOfPages;
     this.read = read;
+  }
 }
 
 /* addBookToLibrary() function adds a newly created Book object 
@@ -132,64 +134,3 @@ submitButton.addEventListener("click", (event) => {
   const inputs = document.querySelectorAll('input[type="text"]');
   inputs.forEach(input => input.value = '');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Displays books in array in a table!!! 
-  function addBookToPage() {
-  const container = document.querySelector(".container2");
-  const bookTable = document.createElement("table");
-  const tableBody = document.createElement("tbody");
-
-  bookTable.innerHTML = 
-    `<thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Pages</th>
-            <th>Read</th>
-          </tr>
-      </thead>`;
-
-  for(let book of myLibrary) {
-    const newRow = document.createElement("tr");
-    const tdTitle = document.createElement("td");
-    const tdAuthor = document.createElement("td");
-    const tdPages = document.createElement("td");
-    const tdRead = document.createElement("td"); 
-
-    tdTitle.textContent = book.title;
-    tdAuthor.textContent = book.author;
-    tdPages.textContent = book.numberOfPages;
-    tdRead.textContent = book.read;
-
-    newRow.appendChild(tdTitle);
-    newRow.appendChild(tdAuthor);
-    newRow.appendChild(tdPages);
-    newRow.appendChild(tdRead);
-
-    tableBody.appendChild(newRow);
-  }
-
-  bookTable.appendChild(tableBody);
-  container.appendChild(bookTable);
-};
-addBookToPage();  */
