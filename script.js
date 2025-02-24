@@ -85,9 +85,9 @@ closeButton.addEventListener("click", () => {
 submitButton.addEventListener("click", (event) => {
   event.preventDefault();
 
-  const bookTitleSubmit = document.querySelector("#book_title");
-  const bookAuthorSubmit = document.querySelector("#book_author");
-  const bookPagesSubmit = document.querySelector("#book_pages");
+  const bookTitleSubmit = document.querySelector('#book_title');
+  const bookAuthorSubmit = document.querySelector('#book_author');
+  const bookPagesSubmit = document.querySelector('#book_pages');
   const bookReadSubmit = document.querySelector('input[name="read_type"]:checked');
 
   let userBook = new Book(bookTitleSubmit.value, bookAuthorSubmit.value, bookPagesSubmit.value, bookReadSubmit.value);
@@ -111,7 +111,14 @@ submitButton.addEventListener("click", (event) => {
     pTitle.textContent = lastItem.title;
     pAuthor.textContent = lastItem.author;
     pPages.textContent = lastItem.numberOfPages += " pages";
-    pRead.textContent = lastItem.read;
+    /* Conditional Statement to display whether book has been read or not */
+    if(lastItem.read === "true") {
+      pRead.textContent = "Read";
+    } else if (lastItem.read === "false") {
+      pRead.textContent = "Not Read";
+    } else {
+      pRead.textContent = "error in code";
+    }
 
     bookCard.appendChild(pTitle);
     bookCard.appendChild(pAuthor);
@@ -122,7 +129,7 @@ submitButton.addEventListener("click", (event) => {
   
   dialog.close(addCardToPage());
 
-  const inputs = document.querySelectorAll('input');
+  const inputs = document.querySelectorAll('input[type="text"]');
   inputs.forEach(input => input.value = '');
 });
 
