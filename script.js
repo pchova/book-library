@@ -27,6 +27,11 @@ function displayBooks(library) {
     const bookCard = document.createElement("div");
     bookCard.classList.add("bookCardStyle");
 
+    let bookIndex = library.indexOf(book);
+    console.log(bookIndex);
+    bookCard.dataset.index = bookIndex;
+    console.log(bookCard);
+
     const pTitle = document.createElement("p");
     const pAuthor = document.createElement("p");
     const pPages = document.createElement("p");
@@ -68,6 +73,11 @@ function displayUserBook() {
 
   const bookCard = document.createElement("div");
   bookCard.classList.add("bookCardStyle");
+
+  let bookIndex = myLibrary.indexOf(lastItem);
+  console.log(bookIndex);
+  bookCard.dataset.index = bookIndex;
+  console.log(bookCard);
 
   const pTitle = document.createElement("p");
   const pAuthor = document.createElement("p");
