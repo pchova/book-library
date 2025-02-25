@@ -36,11 +36,13 @@ function displayBooks(library) {
     const pAuthor = document.createElement("p");
     const pPages = document.createElement("p");
     const pRead = document.createElement("p");
+    const pButton = document.createElement("button");
 
     pTitle.textContent = book.title;
     pAuthor.textContent = book.author;
     pPages.textContent = book.numberOfPages += " pages";
-    /* Conditional Statement to display whether book has been read or not */
+    pButton.textContent = "delete";
+
     if(book.read === true) {
       pRead.textContent = "Read";
     } else if (book.read === false) {
@@ -53,6 +55,7 @@ function displayBooks(library) {
     bookCard.appendChild(pAuthor);
     bookCard.appendChild(pPages);
     bookCard.appendChild(pRead);
+    bookCard.appendChild(pButton);
     container.appendChild(bookCard);
   });
 }
@@ -83,10 +86,12 @@ function displayUserBook() {
   const pAuthor = document.createElement("p");
   const pPages = document.createElement("p");
   const pRead = document.createElement("p");
+  const pButton = document.createElement("button");
 
   pTitle.textContent = lastItem.title;
   pAuthor.textContent = lastItem.author;
   pPages.textContent = lastItem.numberOfPages += " pages";
+  pButton.textContent = "delete";
 
   if(lastItem.read === true) {
     pRead.textContent = "Read";
@@ -100,6 +105,7 @@ function displayUserBook() {
   bookCard.appendChild(pAuthor);
   bookCard.appendChild(pPages);
   bookCard.appendChild(pRead);
+  bookCard.appendChild(pButton);
   container.appendChild(bookCard);
 }
 
@@ -112,12 +118,12 @@ const addButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
 const submitButton = document.querySelector("#submitBtn");
 
-/* addButton to open the dialog */
+/* Event Listener addButton to open the dialog */
 addButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
-/* closeButton to close the dialog */
+/* Event Listener closeButton to close the dialog */
 closeButton.addEventListener("click", () => {
   dialog.close();
 });
