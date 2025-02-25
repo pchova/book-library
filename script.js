@@ -62,6 +62,37 @@ const manualAddBooks = [
 manualAddBooks.forEach(addBookToLibrary);
 displayBooks(myLibrary);
 
+function displayUserBook() {
+  let lastItem = myLibrary[myLibrary.length -1];
+  const container = document.querySelector(".container");
+
+  const bookCard = document.createElement("div");
+  bookCard.classList.add("bookCardStyle");
+
+  const pTitle = document.createElement("p");
+  const pAuthor = document.createElement("p");
+  const pPages = document.createElement("p");
+  const pRead = document.createElement("p");
+
+  pTitle.textContent = lastItem.title;
+  pAuthor.textContent = lastItem.author;
+  pPages.textContent = lastItem.numberOfPages += " pages";
+
+  if(lastItem.read === true) {
+    pRead.textContent = "Read";
+  } else if (lastItem.read === false) {
+    pRead.textContent = "Not Read";
+  } else {
+    pRead.textContent = "error in code";
+  }
+
+  bookCard.appendChild(pTitle);
+  bookCard.appendChild(pAuthor);
+  bookCard.appendChild(pPages);
+  bookCard.appendChild(pRead);
+  container.appendChild(bookCard);
+}
+
 /* The code below deals with the dialog box and form submit, allows user
 ** to close the modal box witout submitting data and prevents form data
 ** to submit and instead displays data in the container class after the
@@ -99,44 +130,8 @@ submitButton.addEventListener("click", (event) => {
   );
 
   addBookToLibrary(userBook);
-  displayBooks(myLibrary);
+  displayUserBook();
   
   dialog.close();
   document.querySelector("form").reset();
 });
-
-
-
-
-
-/* 
-function addCardToPage() {
-  let lastItem = myLibrary[myLibrary.length -1];
-  const container = document.querySelector(".container");
-
-  const bookCard = document.createElement("div");
-  bookCard.classList.add("bookCardStyle");
-
-  const pTitle = document.createElement("p");
-  const pAuthor = document.createElement("p");
-  const pPages = document.createElement("p");
-  const pRead = document.createElement("p");
-
-  pTitle.textContent = lastItem.title;
-  pAuthor.textContent = lastItem.author;
-  pPages.textContent = lastItem.numberOfPages += " pages";
-
-  if(lastItem.read === true) {
-    pRead.textContent = "Read";
-  } else if (lastItem.read === false) {
-    pRead.textContent = "Not Read";
-  } else {
-    pRead.textContent = "error in code";
-  }
-
-  bookCard.appendChild(pTitle);
-  bookCard.appendChild(pAuthor);
-  bookCard.appendChild(pPages);
-  bookCard.appendChild(pRead);
-  container.appendChild(bookCard);
-} */
