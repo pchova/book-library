@@ -23,12 +23,13 @@ function addBookToLibrary(newBook) {
 function displayBooks(library) {
   const container = document.querySelector(".container");
 
-  library.forEach(book => {
+  library.forEach((book, index) => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("bookCardStyle");
+    bookCard.setAttribute("data-index", `${index}`);
 
-    let bookIndex = library.indexOf(book);
-    bookCard.dataset.index = bookIndex;
+    //let bookIndex = library.indexOf(book);
+    //bookCard.dataset.index = bookIndex;
 
     const pTitle = document.createElement("p");
     const pAuthor = document.createElement("p");
@@ -83,7 +84,8 @@ function displayUserBook() {
   bookCard.classList.add("bookCardStyle");
 
   let bookIndex = myLibrary.indexOf(lastItem);
-  bookCard.dataset.index = bookIndex;
+  bookCard.setAttribute("data-index", `${bookIndex}`);
+  //bookCard.dataset.index = bookIndex;
 
   const pTitle = document.createElement("p");
   const pAuthor = document.createElement("p");
@@ -120,11 +122,11 @@ function displayUserBook() {
 
 /* Deletes a bookCard that a user added to the page */
 function deleteBook(bookCard) {
-  let bookIndex = bookCard.dataset.index;
+  let bookIndex = bookCard.getAttribute("data-index");
+  
+  myLibrary.splice(bookIndex, 1);
+  console.log(myLibrary); 
   bookCard.remove();
-
-  /* myLibrary.splice(bookIndex, 1);
-  console.log(myLibrary); */
 }
 
 /* Below deals with the dialog box and form submit, displays 
