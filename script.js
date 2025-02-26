@@ -28,15 +28,15 @@ function displayBooks(library) {
     bookCard.classList.add("bookCardStyle");
 
     let bookIndex = library.indexOf(book);
-    console.log(bookIndex);
     bookCard.dataset.index = bookIndex;
-    console.log(bookCard);
 
     const pTitle = document.createElement("p");
     const pAuthor = document.createElement("p");
     const pPages = document.createElement("p");
     const pRead = document.createElement("p");
     const pButton = document.createElement("button");
+    pButton.classList.add("deleteButton");
+
 
     pTitle.textContent = book.title;
     pAuthor.textContent = book.author;
@@ -57,6 +57,11 @@ function displayBooks(library) {
     bookCard.appendChild(pRead);
     bookCard.appendChild(pButton);
     container.appendChild(bookCard);
+
+    /* Attach event listener to pButton to delete from DOM and myLibrary */
+    pButton.addEventListener("click", () => {
+      deleteBook(bookCard);
+    });
   });
 }
 
@@ -78,15 +83,14 @@ function displayUserBook() {
   bookCard.classList.add("bookCardStyle");
 
   let bookIndex = myLibrary.indexOf(lastItem);
-  console.log(bookIndex);
   bookCard.dataset.index = bookIndex;
-  console.log(bookCard);
 
   const pTitle = document.createElement("p");
   const pAuthor = document.createElement("p");
   const pPages = document.createElement("p");
   const pRead = document.createElement("p");
   const pButton = document.createElement("button");
+  pButton.classList.add("deleteButton");
 
   pTitle.textContent = lastItem.title;
   pAuthor.textContent = lastItem.author;
@@ -107,12 +111,24 @@ function displayUserBook() {
   bookCard.appendChild(pRead);
   bookCard.appendChild(pButton);
   container.appendChild(bookCard);
+
+  /* Attach event listener to pButton to delete from DOM and myLibrary */
+  pButton.addEventListener("click", () => {
+    deleteBook(bookCard);
+  });
 }
 
-/* The code below deals with the dialog box and form submit, allows user
-** to close the modal box witout submitting data and prevents form data
-** to submit and instead displays data in the container class after the
-** already created Book objects */
+/* Deletes a bookCard that a user added to the page */
+function deleteBook(bookCard) {
+  let bookIndex = bookCard.dataset.index;
+  bookCard.remove();
+
+  /* myLibrary.splice(bookIndex, 1);
+  console.log(myLibrary); */
+}
+
+/* Below deals with the dialog box and form submit, displays 
+** data in the container class after the already created Book objects */
 const dialog = document.querySelector("dialog");
 const addButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
