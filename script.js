@@ -28,61 +28,56 @@ function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-/* displayBooks() function creates a book container for each
-** book object in the array and displays them in the DOM */
-function displayBooks(library) {
-  const container = document.querySelector(".container");
-
-  library.forEach((book, index) => {
-    const bookCard = document.createElement("div");
-    bookCard.classList.add("bookCardStyle");
-    bookCard.setAttribute("data-index", `${index}`);
-
-    const pTitle = document.createElement("p");
-    const pAuthor = document.createElement("p");
-    const pPages = document.createElement("p");
-    const pRead = document.createElement("button");
-    const pDelete = document.createElement("button");
-    pDelete.classList.add("deleteButton");
-    pRead.classList.add("readButton");
-
-    pTitle.textContent = book.title;
-    pAuthor.textContent = book.author;
-    pPages.textContent = "Number of pages: " + book.numberOfPages;
-    pDelete.innerHTML = '<img src="delete.svg" alt="trash icon"/>';
-    if(book.read === true) {
-      pRead.textContent = "Read";
-    } else if (book.read === false) {
-      pRead.textContent = "Not Read";
-    } else {
-      pRead.textContent = "error in code";
-    }
-
-    bookCard.appendChild(pTitle);
-    bookCard.appendChild(pAuthor);
-    bookCard.appendChild(pPages);
-    bookCard.appendChild(pRead);
-    bookCard.appendChild(pDelete);
-    container.appendChild(bookCard);
-
-    /* Event listener to delete bookCard from DOM and myLibrary */
-    pDelete.addEventListener("click", () => {
-      deleteBook(bookCard);
-    });
-
-    pRead.addEventListener("click", () => {
-      book.toggleRead();
-      renderLibrary();
-    });
-  });
-}
-
 /* renderLibrary() function clears the DOM and displays book objects
 ** after any change to the array */
 function renderLibrary() {
   const container = document.querySelector(".container");
   container.innerHTML = "";
-  displayBooks(myLibrary);
+  myLibrary.forEach((book, index) => createBookCard(book, index));
+}
+
+/* deleteBook() function deletes a bookCard that a user added to the page */
+function deleteBook(bookCard) {
+  let bookIndex = parseInt(bookCard.getAttribute("data-index"));
+  myLibrary.splice(bookIndex, 1);
+  renderLibrary();
+}
+
+/* createBookCard() function creates a book container for each
+** book object to display in the DOM */
+function createBookCard(book, index) {
+  const container = document.querySelector(".container");
+  
+  const bookCard = document.createElement("div");
+  bookCard.classList.add("bookCardStyle");
+  bookCard.setAttribute("data-index", index);
+
+  const pTitle = document.createElement("p");
+  pTitle.textContent = `Title: ${book.title}`;
+
+  const pAuthor = document.createElement("p");
+  pAuthor.textContent = `Author: ${book.author}`;
+
+  const pPages = document.createElement("p");
+  pPages.textContent = `Number of pages: ${book.numberOfPages}`;
+
+  const pRead = document.createElement("button");
+  pRead.classList.add("readButton");
+  pRead.textContent = book.read ? "Read" : "Not Read";
+  pRead.addEventListener("click", () => {
+    book.toggleRead();
+    renderLibrary();
+  });
+
+  const pDelete = document.createElement("button");
+  pDelete.classList.add("deleteButton");
+  pDelete.innerHTML = '<img src="delete.svg" alt="trash icon"/>';
+  pDelete.addEventListener("click", () => {
+    deleteBook(bookCard);
+  });
+  
+  bookCard.append(pTitle, pAuthor, pPages, pRead, pDelete);
+  container.appendChild(bookCard);
 }
 
 const manualAddBooks = [
@@ -94,15 +89,7 @@ const manualAddBooks = [
   new Book("Ulysseus", "James Joyce", "732", false)
 ];
 manualAddBooks.forEach(addBookToLibrary);
-displayBooks(myLibrary);
-
-/* deleteBook() function deletes a bookCard that a user added to the page */
-function deleteBook(bookCard) {
-  let bookIndex = bookCard.getAttribute("data-index");
-  myLibrary.splice(bookIndex, 1);
-  bookCard.remove();
-  renderLibrary();
-}
+renderLibrary();
 
 /* The dialog box and form submit */
 const dialog = document.querySelector("dialog");
