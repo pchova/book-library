@@ -39,7 +39,6 @@ function displayBooks(library) {
     pAuthor.textContent = book.author;
     pPages.textContent = book.numberOfPages + " pages";
     pButton.textContent = "delete";
-
     if(book.read === true) {
       pRead.textContent = "Read";
     } else if (book.read === false) {
@@ -83,7 +82,6 @@ displayBooks(myLibrary);
 function deleteBook(bookCard) {
   let bookIndex = bookCard.getAttribute("data-index");
   myLibrary.splice(bookIndex, 1);
-
   bookCard.remove();
   renderLibrary();
 }
@@ -108,7 +106,6 @@ closeButton.addEventListener("click", () => {
 ** displays book objects on the page */
 submitButton.addEventListener("click", (event) => {
   event.preventDefault();
-
   const bookTitleSubmit = document.querySelector('#book_title').value;
   const bookAuthorSubmit = document.querySelector('#book_author').value;
   const bookPagesSubmit = document.querySelector('#book_pages').value;
@@ -123,7 +120,6 @@ submitButton.addEventListener("click", (event) => {
 
   addBookToLibrary(userBook);
   renderLibrary();
-  
   dialog.close();
   document.querySelector("form").reset();
 });

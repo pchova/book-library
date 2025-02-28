@@ -6,29 +6,44 @@ html {
     box-sizing: inherit;
 }
 
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+h2 {
+    background-color: lightgoldenrodyellow;
+    margin: 0;
+    padding: 20px;
+}
+
 .container {
+    background-color: #FCD7AD;
+    padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
     grid-gap: 15px;
+    justify-content: center; 
 }
 
 .bookCardStyle {
-    border: 2px solid black;
     border-radius: 15px;
-
     background-color: lightpink;
     border: none;
     display: flex;
     flex-direction: column;
-    padding: 10px 10px;
-}
-
-.bookCardStyle > * {
-    flex: 1;
+    max-height: fit-content;
+    padding: 10px;
 }
 
 footer {
     padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    background-color: lightgoldenrodyellow;
 }
 
 #addButtonStyle {
@@ -36,7 +51,8 @@ footer {
     width: 150px;
     border: none;
     border-radius: 10px;
-    background-color: lightskyblue;
+    background-color: #F6C28B;
+    font-weight: bold;
 }
 
 #addButtonStyle:hover {
