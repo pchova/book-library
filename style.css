@@ -47,6 +47,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .bookCardStyle {
+    align-self: start;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     font-size: 18px;
     background-color: lightpink;
@@ -58,6 +59,10 @@ h1, h2, h3, h4, h5, h6, p {
     align-items: flex-start;
     justify-content: space-evenly;
     gap: 8px;
+}
+
+.bookCardStyle p {
+    padding: 5px 0px;
 }
 
 footer {
@@ -73,7 +78,6 @@ footer {
     width: 50px;
     border: none;
     border-radius: 10px;
-    /* background-color: #F6C28B; */
     background-color: lightpink;
     padding: 13px
 }
@@ -92,6 +96,19 @@ footer {
     width: 20px;
     padding: 2px;
 }
+
+.deleteButton {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    border: none;
+    align-self: flex-end;
+}
+
+.deleteButton:hover {
+    background-color: palegoldenrod;
+}
+
 
 /* ****** DIALOG FORM STYLING  ****** */
 dialog::backdrop {

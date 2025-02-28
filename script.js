@@ -42,13 +42,13 @@ function displayBooks(library) {
     const pAuthor = document.createElement("p");
     const pPages = document.createElement("p");
     const pRead = document.createElement("button");
-    const pButton = document.createElement("button");
-    pButton.classList.add("deleteButton");
+    const pDelete = document.createElement("button");
+    pDelete.classList.add("deleteButton");
 
     pTitle.textContent = book.title;
     pAuthor.textContent = book.author;
-    pPages.textContent = book.numberOfPages + " pages";
-    pButton.textContent = "delete";
+    pPages.textContent = "Number of pages: " + book.numberOfPages;
+    pDelete.innerHTML = '<img src="delete.svg" alt="trash icon"/>';
     if(book.read === true) {
       pRead.textContent = "Read";
     } else if (book.read === false) {
@@ -61,11 +61,11 @@ function displayBooks(library) {
     bookCard.appendChild(pAuthor);
     bookCard.appendChild(pPages);
     bookCard.appendChild(pRead);
-    bookCard.appendChild(pButton);
+    bookCard.appendChild(pDelete);
     container.appendChild(bookCard);
 
     /* Event listener deletes a bookCard from DOM and myLibrary */
-    pButton.addEventListener("click", () => {
+    pDelete.addEventListener("click", () => {
       deleteBook(bookCard);
     });
   });
