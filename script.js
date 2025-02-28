@@ -28,7 +28,7 @@ function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-/* addManualCardToPage() function creates a book container for each
+/* displayBooks() function creates a book container for each
 ** book object in the array and displays them in the DOM */
 function displayBooks(library) {
   const container = document.querySelector(".container");
@@ -81,7 +81,7 @@ function displayBooks(library) {
 ** after any change to the array */
 function renderLibrary() {
   const container = document.querySelector(".container");
-  container.replaceChildren();
+  container.innerHTML = "";
   displayBooks(myLibrary);
 }
 
