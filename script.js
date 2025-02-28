@@ -41,7 +41,7 @@ function displayBooks(library) {
 
     pTitle.textContent = book.title;
     pAuthor.textContent = book.author;
-    pPages.textContent = book.numberOfPages += " pages";
+    pPages.textContent = book.numberOfPages + " pages";
     pButton.textContent = "delete";
 
     if(book.read === true) {
@@ -66,59 +66,20 @@ function displayBooks(library) {
   });
 }
 
+function renderLibrary() {
+  const container = document.querySelector(".container");
+  container.replaceChildren();
+  displayBooks(myLibrary);
+}
+
 const manualAddBooks = [
   new Book("The Master and Margarita", "Mikhail Bulgakov", "448", true),
   new Book("Idiot", "Fyodor Dostoyevskiy", "640", false),
   new Book("Anna Karenina", "Lev Tolstoy", "864", false),
   new Book("Dama s Sabachkoi", "Anton Chekhov", "50", true)
 ];
-
 manualAddBooks.forEach(addBookToLibrary);
 displayBooks(myLibrary);
-
-function displayUserBook() {
-  let lastItem = myLibrary[myLibrary.length -1];
-  const container = document.querySelector(".container");
-
-  const bookCard = document.createElement("div");
-  bookCard.classList.add("bookCardStyle");
-
-  let bookIndex = myLibrary.indexOf(lastItem);
-  bookCard.setAttribute("data-index", `${bookIndex}`);
-  //bookCard.dataset.index = bookIndex;
-
-  const pTitle = document.createElement("p");
-  const pAuthor = document.createElement("p");
-  const pPages = document.createElement("p");
-  const pRead = document.createElement("p");
-  const pButton = document.createElement("button");
-  pButton.classList.add("deleteButton");
-
-  pTitle.textContent = lastItem.title;
-  pAuthor.textContent = lastItem.author;
-  pPages.textContent = lastItem.numberOfPages += " pages";
-  pButton.textContent = "delete";
-
-  if(lastItem.read === true) {
-    pRead.textContent = "Read";
-  } else if (lastItem.read === false) {
-    pRead.textContent = "Not Read";
-  } else {
-    pRead.textContent = "error in code";
-  }
-
-  bookCard.appendChild(pTitle);
-  bookCard.appendChild(pAuthor);
-  bookCard.appendChild(pPages);
-  bookCard.appendChild(pRead);
-  bookCard.appendChild(pButton);
-  container.appendChild(bookCard);
-
-  /* Attach event listener to pButton to delete from DOM and myLibrary */
-  pButton.addEventListener("click", () => {
-    deleteBook(bookCard);
-  });
-}
 
 /* Deletes a bookCard that a user added to the page */
 function deleteBook(bookCard) {
@@ -127,6 +88,7 @@ function deleteBook(bookCard) {
   myLibrary.splice(bookIndex, 1);
   console.log(myLibrary); 
   bookCard.remove();
+  renderLibrary();
 }
 
 /* Below deals with the dialog box and form submit, displays 
@@ -164,7 +126,7 @@ submitButton.addEventListener("click", (event) => {
   );
 
   addBookToLibrary(userBook);
-  displayUserBook();
+  renderLibrary();
   
   dialog.close();
   document.querySelector("form").reset();
