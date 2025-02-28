@@ -67,12 +67,18 @@ footer p {
     margin: 0;
 }
 
-#addButtonStyle {
+#openDialogBtn {
     height: 50px;
     width: 50px;
     border: none;
     border-radius: 10px;
     background-color: #F6C28B;
+    padding: 13px
+}
+
+#openDialogBtn img {
+    height: 25px;
+    width: 25px;
 }
 
 #addButtonStyle:hover {
@@ -80,8 +86,8 @@ footer p {
 }
 
 #closeDialogBtn {
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     padding: 2px;
 }
 
