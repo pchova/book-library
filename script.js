@@ -118,6 +118,12 @@ closeButton.addEventListener("click", () => {
 /* Event Listener prevents prevents submitting the form and
 ** displays book objects on the page */
 submitButton.addEventListener("click", (event) => {
+  const form = document.querySelector("form");
+  if(!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
   event.preventDefault();
   const bookTitleSubmit = document.querySelector('#book_title').value;
   const bookAuthorSubmit = document.querySelector('#book_author').value;
