@@ -73,11 +73,16 @@ footer p {
     border: none;
     border-radius: 10px;
     background-color: #F6C28B;
-    font-weight: bold;
 }
 
 #addButtonStyle:hover {
     background-color: goldenrod;
+}
+
+#closeDialogBtn {
+    height: 25px;
+    width: 25px;
+    padding: 2px;
 }
 
 /* ****** DIALOG FORM STYLING  ****** */
@@ -97,6 +102,10 @@ form {
     grid-gap: 10px;
 }
 
+form h3 {
+    margin: 20px 0px 10px;
+}
+
 form div {
     display: flex;
     flex-direction: column;
@@ -110,4 +119,8 @@ fieldset {
 
 legend {
     padding: 0;
+}
+
+#submitBtn {
+    margin: 10px 0px 10px;
 }

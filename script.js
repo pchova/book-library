@@ -14,7 +14,12 @@ class Book {
 
 /* Book Prototype function that toggle's a book's read status */
 Book.prototype.toggleRead = function() {
-
+  if (this.read === true) {
+    this.read = false;
+  } else {
+    this.read = true;
+  }
+  return;
 }
 
 /* addBookToLibrary() function adds a newly created Book object 
