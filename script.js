@@ -44,6 +44,7 @@ function displayBooks(library) {
     const pRead = document.createElement("button");
     const pDelete = document.createElement("button");
     pDelete.classList.add("deleteButton");
+    pRead.classList.add("readButton");
 
     pTitle.textContent = book.title;
     pAuthor.textContent = book.author;

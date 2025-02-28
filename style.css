@@ -100,8 +100,8 @@ footer {
 .deleteButton {
     height: 50px;
     width: 50px;
+    border: 2px double palevioletred;
     border-radius: 10px;
-    border: none;
     align-self: flex-end;
 }
 
@@ -109,7 +109,15 @@ footer {
     background-color: palegoldenrod;
 }
 
+.readButton {
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: 2px double palevioletred;
+}
 
+.readButton:hover {
+    background-color: palegoldenrod;
+}
 /* ****** DIALOG FORM STYLING  ****** */
 dialog::backdrop {
     background-image: linear-gradient(
