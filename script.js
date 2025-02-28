@@ -18,8 +18,8 @@ function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
 }
 
-/* addManualCardToPage() function manually adds books to the array 
-** and displays them on the page without subitting through the user form */
+/* addManualCardToPage() function creates a book container for each
+** book object in the array and displays them in the DOM */
 function displayBooks(library) {
   const container = document.querySelector(".container");
 
@@ -28,16 +28,12 @@ function displayBooks(library) {
     bookCard.classList.add("bookCardStyle");
     bookCard.setAttribute("data-index", `${index}`);
 
-    //let bookIndex = library.indexOf(book);
-    //bookCard.dataset.index = bookIndex;
-
     const pTitle = document.createElement("p");
     const pAuthor = document.createElement("p");
     const pPages = document.createElement("p");
     const pRead = document.createElement("p");
     const pButton = document.createElement("button");
     pButton.classList.add("deleteButton");
-
 
     pTitle.textContent = book.title;
     pAuthor.textContent = book.author;
@@ -59,13 +55,15 @@ function displayBooks(library) {
     bookCard.appendChild(pButton);
     container.appendChild(bookCard);
 
-    /* Attach event listener to pButton to delete from DOM and myLibrary */
+    /* Event listener deletes a bookCard from DOM and myLibrary */
     pButton.addEventListener("click", () => {
       deleteBook(bookCard);
     });
   });
 }
 
+/* renderLibrary() function clears the DOM and displays book objects
+** after any change to the array */
 function renderLibrary() {
   const container = document.querySelector(".container");
   container.replaceChildren();
@@ -81,18 +79,16 @@ const manualAddBooks = [
 manualAddBooks.forEach(addBookToLibrary);
 displayBooks(myLibrary);
 
-/* Deletes a bookCard that a user added to the page */
+/* deleteBook() function deletes a bookCard that a user added to the page */
 function deleteBook(bookCard) {
   let bookIndex = bookCard.getAttribute("data-index");
-  
   myLibrary.splice(bookIndex, 1);
-  console.log(myLibrary); 
+
   bookCard.remove();
   renderLibrary();
 }
 
-/* Below deals with the dialog box and form submit, displays 
-** data in the container class after the already created Book objects */
+/* The dialog box and form submit */
 const dialog = document.querySelector("dialog");
 const addButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
@@ -108,8 +104,8 @@ closeButton.addEventListener("click", () => {
   dialog.close();
 });
 
-/* Event Listener prevents prevents submitting the form and instead
-** displays the data on the page */
+/* Event Listener prevents prevents submitting the form and
+** displays book objects on the page */
 submitButton.addEventListener("click", (event) => {
   event.preventDefault();
 
