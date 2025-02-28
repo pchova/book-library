@@ -13,17 +13,29 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
-h2 {
+.header {
     background-color: lightgoldenrodyellow;
     margin: 0;
-    padding: 20px;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+}
+
+h2 {
+    margin: 0;
 }
 
 .container {
     background-color: #FCD7AD;
-    padding: 20px;
+    padding: 20px 100px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
+    grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 15px;
     justify-content: center; 
 }
@@ -34,21 +46,30 @@ h2 {
     border: none;
     display: flex;
     flex-direction: column;
-    max-height: fit-content;
+    /* max-height: fit-content; */
+    max-height: 100%;
     padding: 10px;
+    justify-content: space-evenly;
+}
+
+.bookCardStyle p {
+    margin: 0;
 }
 
 footer {
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding: 25px 100px;
     display: flex;
     justify-content: center;
     background-color: lightgoldenrodyellow;
 }
 
+footer p {
+    margin: 0;
+}
+
 #addButtonStyle {
-    height: 100px;
-    width: 150px;
+    height: 50px;
+    width: 50px;
     border: none;
     border-radius: 10px;
     background-color: #F6C28B;

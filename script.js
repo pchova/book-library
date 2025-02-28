@@ -12,6 +12,11 @@ class Book {
   }
 }
 
+/* Book Prototype function that toggle's a book's read status */
+Book.prototype.toggleRead = function() {
+
+}
+
 /* addBookToLibrary() function adds a newly created Book object 
 ** to the myLibrary array */
 function addBookToLibrary(newBook) {
@@ -31,7 +36,7 @@ function displayBooks(library) {
     const pTitle = document.createElement("p");
     const pAuthor = document.createElement("p");
     const pPages = document.createElement("p");
-    const pRead = document.createElement("p");
+    const pRead = document.createElement("button");
     const pButton = document.createElement("button");
     pButton.classList.add("deleteButton");
 
@@ -73,7 +78,9 @@ const manualAddBooks = [
   new Book("The Master and Margarita", "Mikhail Bulgakov", "448", true),
   new Book("Idiot", "Fyodor Dostoyevskiy", "640", false),
   new Book("Anna Karenina", "Lev Tolstoy", "864", false),
-  new Book("Dama s Sabachkoi", "Anton Chekhov", "50", true)
+  new Book("Dama s Sabachkoi", "Anton Chekhov", "50", true),
+  new Book("The One Straw Revolution", "Masanobu Fukuoka", '200', true),
+  new Book("Ulysseus", "James Joyce", "732", false)
 ];
 manualAddBooks.forEach(addBookToLibrary);
 displayBooks(myLibrary);
