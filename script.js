@@ -65,9 +65,14 @@ function displayBooks(library) {
     bookCard.appendChild(pDelete);
     container.appendChild(bookCard);
 
-    /* Event listener deletes a bookCard from DOM and myLibrary */
+    /* Event listener to delete bookCard from DOM and myLibrary */
     pDelete.addEventListener("click", () => {
       deleteBook(bookCard);
+    });
+
+    pRead.addEventListener("click", () => {
+      book.toggleRead();
+      renderLibrary();
     });
   });
 }
