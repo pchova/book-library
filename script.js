@@ -80,6 +80,7 @@ function createBookCard(book, index) {
   container.appendChild(bookCard);
 }
 
+/*Initialize array with books */
 const manualAddBooks = [
   new Book("The Master and Margarita", "Mikhail Bulgakov", "448", true),
   new Book("Idiot", "Fyodor Dostoyevskiy", "640", false),
@@ -91,46 +92,46 @@ const manualAddBooks = [
 manualAddBooks.forEach(addBookToLibrary);
 renderLibrary();
 
-/* The dialog box and form submit */
+/* Dialog and Form Selectors */
 const dialog = document.querySelector("dialog");
 const addButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
 const submitButton = document.querySelector("#submitBtn");
 
-/* Event Listener addButton to open the dialog */
+/* Event Listener addButton to open/close the dialog */
 addButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
-/* Event Listener closeButton to close the dialog */
 closeButton.addEventListener("click", () => {
   dialog.close();
 });
 
-/* Event Listener prevents prevents submitting the form and
-** displays book objects on the page */
+/* Event Listener prevents prevents submitting the form
+** and adds user data to array*/
 submitButton.addEventListener("click", (event) => {
+  event.preventDefault(); 
+
   const form = document.querySelector("form");
   if(!form.checkValidity()) {
     form.reportValidity();
     return;
   }
 
-  event.preventDefault();
-  const bookTitleSubmit = document.querySelector('#book_title').value;
-  const bookAuthorSubmit = document.querySelector('#book_author').value;
-  const bookPagesSubmit = document.querySelector('#book_pages').value;
-  const bookReadSubmit = document.querySelector('input[name="read_type"]:checked').value === "true";
-
-  const userBook = new Book(
-    bookTitleSubmit, 
-    bookAuthorSubmit, 
-    bookPagesSubmit, 
-    bookReadSubmit
-  );
-
+  const userBook = getFormData();
   addBookToLibrary(userBook);
   renderLibrary();
+
   dialog.close();
-  document.querySelector("form").reset();
+  form.reset();
 });
+
+/* Creates book object with from data */
+function getFormData() {
+  return new Book(
+    document.querySelector('#book_title').value,
+    document.querySelector('#book_author').value,
+    document.querySelector('#book_pages').value,
+    document.querySelector('input[name="read_type"]:checked').value === "true"
+  );   
+}
