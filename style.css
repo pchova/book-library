@@ -48,11 +48,11 @@ h1, h2, h3, h4, h5, h6, p {
 
 .bookCardStyle {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    font-size: 14px;
+    font-size: 12px;
     background-color: lightpink;
     border-radius: 15px;
     border: none;
-    padding: 40px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -115,8 +115,9 @@ footer {
 
 .readButton {
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: 2px solid palevioletred;
+    align-self: start;
 }
 
 .readButton:hover {
