@@ -42,21 +42,19 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: lightgoldenrodyellow;
     padding: 40px 200px 30px 200px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
     grid-gap: 30px;
 }
 
 .bookCardStyle {
-    align-self: start;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    font-size: 18px;
+    font-size: 14px;
     background-color: lightpink;
     border-radius: 15px;
     border: none;
     padding: 40px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: space-evenly;
     gap: 8px;
 }
@@ -104,8 +102,8 @@ footer {
 }
 
 .deleteButton {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     border: 2px solid palevioletred;
     border-radius: 10px;
     align-self: flex-end;
