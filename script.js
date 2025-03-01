@@ -71,7 +71,7 @@ function createBookCard(book, index) {
 
   const pDelete = document.createElement("button");
   pDelete.classList.add("deleteButton");
-  pDelete.innerHTML = '<img src="delete.svg" alt="trash icon"/>';
+  pDelete.innerHTML = '<img src="icons/delete.svg" alt="trash icon"/>';
   pDelete.addEventListener("click", () => {
     deleteBook(bookCard);
   });
