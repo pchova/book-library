@@ -190,3 +190,16 @@ legend {
 #submitBtn:hover {
     background-color: palegoldenrod;
 }
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        grid-template-columns: 250px;
+        padding: 20px 10px;
+    }
+
+    .header {
+        padding: 20px 10px;
+        flex-direction: column;
+    }
+}
