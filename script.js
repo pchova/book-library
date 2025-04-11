@@ -126,7 +126,7 @@ submitButton.addEventListener("click", (event) => {
   form.reset();
 });
 
-/* Creates book object with from data */
+/* Creates book object with form dialog data */
 function getFormData() {
   return new Book(
     document.querySelector('#book_title').value,
