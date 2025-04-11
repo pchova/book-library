@@ -51,7 +51,6 @@ h1, h2, h3, h4, h5, h6, p {
 .bookCardStyle {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     font-size: 12px;
-    aspect-ratio: 1/1;
     background-color: lightpink;
     border-radius: 15px;
     border: none;
